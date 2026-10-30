@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #faf8f2;
+  --color-cream: #f3efe3;
+  --color-ink: #16140e;
+  --color-ink2: #4c483c;
+  --color-mute: #8b8471;
+  --color-line: #e3dcc9;
+  --color-accent: #ff4d00;
+  --color-accentink: #b23700;
+  --color-moss: #20714b;
+  --color-panel: #14130c;
+  --color-panel2: #1e1c12;
+  --color-paneline: #2e2b1e;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* ---- scroll reveal: weighted, single easing, no bounce ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-seen {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* ---- selector ticker ---- */
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: ticker 42s linear infinite;
+  will-change: transform;
+}
+.ticker-mask:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ---- film grain: barely-there ---- */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- blinking caret ---- */
+@keyframes caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1.1s steps(1) infinite;
+}
+
+/* ---- rec dot pulse ---- */
+@keyframes recpulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.rec-dot {
+  animation: recpulse 1.4s ease-in-out infinite;
+}
+
+/* ---- hairline utility ---- */
+.rule {
+  border-color: var(--color-line);
+}
+
+/* ---- display type optical tweak ---- */
+.font-display {
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
