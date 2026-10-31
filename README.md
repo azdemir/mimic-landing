@@ -55,3 +55,5 @@ as such on the page — not a live model run.
 ## Achievements
 
 [![Quickdraw + YOLO run](https://img.shields.io/badge/badges-quickdraw%20%2B%20yolo-blue)](https://github.com/azdemir/mimic-landing/issues/1)
+
+Run completed 2026-10-30 — badges earned: Quickdraw, YOLO.
