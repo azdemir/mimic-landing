@@ -48,3 +48,10 @@ npm run start
 
 The demo is a concept simulation with illustrative values, honestly labeled
 as such on the page — not a live model run.
+
+## Achievements
+
+[![Quickdraw + YOLO run](https://img.shields.io/badge/badges-quickdraw
+## Achievements
+
+[![Quickdraw + YOLO run](https://img.shields.io/badge/badges-quickdraw%20%2B%20yolo-blue)](https://github.com/azdemir/mimic-landing/issues/1)
